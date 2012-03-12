@@ -1,0 +1,9 @@
+<div>
+	<ul>
+		<% _.each(collections, function(collection){ %>
+			<li>
+				<a href="/collection/<%= collection.get('slug') %>"><%= collection.get("title") %></a>
+			</li>
+		<% }); %>
+	</ul>
+</div>
