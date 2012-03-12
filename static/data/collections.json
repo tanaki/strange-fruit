@@ -5,7 +5,7 @@
 			"slug" : "fine-collection",
 			"title" : "Fine Collection",
 			"description" : "Lorem ipsum",
-			"items" : [
+			"products" : [
 				{
 					"id" : 0,
 					"title" : "fine ring",
@@ -23,7 +23,7 @@
 			"slug" : "silver-collection",
 			"title" : "Silver Collection",
 			"description" : "Lorem ipsum",
-			"items" : [
+			"products" : [
 				{
 					"id" : 0,
 					"title" : "silver ring",
@@ -41,7 +41,7 @@
 			"slug" : "bespoke-collection",
 			"title" : "Bespoke Collection",
 			"description" : "Lorem ipsum",
-			"items" : [
+			"products" : [
 				{
 					"id" : 0,
 					"title" : "bespoke ring",

@@ -1,5 +1,5 @@
 
-SF.Model.Item = Backbone.Model.extend({
+SF.Model.Product = Backbone.Model.extend({
 	
 	defaults: {
 		id : 0,

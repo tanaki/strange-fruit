@@ -90,7 +90,7 @@ html,
 body {
 	height:100%;
 	width:100%;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 body {
@@ -128,6 +128,16 @@ body {
 			margin-top:-41px;
 		}
 
+		.logo,
+		.cart,
+		.menu {
+			-webkit-transition: .3s linear;
+		}
+		.cart,
+		.menu {
+			-webkit-transition-delay: .15s;
+		}
+
 
 		.cart a,
 		.menu .menu-btn {
@@ -146,7 +156,6 @@ body {
 			color:#fff;
 		}
 	}
-		
 
 	/* FOOTER */
 	footer {
@@ -166,5 +175,23 @@ body {
 		left:0;
 		z-index:2;
 
+	}
+
+	/* SPECIFIC PAGE CONTENT */
+	.home {
+		header {
+			.logo {
+				top:-40px;
+			}
+			.cart {
+				left:-40px;
+			}
+			.menu {
+				right:-40px;
+			}
+		}
+		footer {
+			bottom:-40px;
+		}
 	}
 

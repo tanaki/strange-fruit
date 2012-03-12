@@ -6,7 +6,7 @@ SF.Model.Collection = Backbone.Model.extend({
 		slug : "",
 		title : "",
 		description : "",
-		items : null
+		products : null
 	},
 	
 	initialize: function(){
@@ -20,9 +20,13 @@ SF.Model.Collection = Backbone.Model.extend({
 		this.title = data.title;
 		this.description = data.description;
 		
-		this.items = new SF.Collection.ItemCollection(data.items);
+		this.products = new SF.Collection.ProductCollection(data.products);
 
 		return this;
+	},
+
+	getProducts : function(a, b, c){
+		return this.products.models;
 	}
 	
 });

@@ -6,35 +6,38 @@ SF.Router = Backbone.Router.extend({
 	eventHandlers : {},
 	
 	routes : {
-		"collection" : "_collectionAction",
-		"detail" : "_detailAction",
+		"about" : "_aboutAction",
 		"cart" : "_cartAction",
+		"collections" : "_collectionAction",
+		"collection/:slug" : "_collectionAction",
 		"contact" : "_contactAction",
+		"press" : "_pressAction",
+		"product/:slug" : "_productAction",
 		"*actions" : "_defaultAction"
 	},
 	
 	/*
-	 * collection Action
+	 * about Action
 	 * @private
 	 */
-	_collectionAction : function() {
-		this._displayPage( SF.Events.SHOW_COLLECTIONS );
+	_aboutAction : function() {
+		this._displayPage( SF.Events.SHOW_ABOUT);
 	},
 	
 	/*
-	 * collection Action
-	 * @private
-	 */
-	_detailAction : function() {
-		this._displayPage( SF.Events.SHOW_DETAIL );
-	},
-	
-	/*
-	 * collection Action
+	 * about Action
 	 * @private
 	 */
 	_cartAction : function() {
-		this._displayPage( SF.Events.SHOW_CART );
+		this._displayPage( SF.Events.SHOW_CART);
+	},
+
+	/*
+	 * collection Action
+	 * @private
+	 */
+	_collectionAction : function(slug) {
+		this._displayPage( SF.Events.SHOW_COLLECTIONS, slug );
 	},
 	
 	/*
@@ -43,6 +46,22 @@ SF.Router = Backbone.Router.extend({
 	 */
 	_contactAction : function() {
 		this._displayPage( SF.Events.SHOW_CONTACT );
+	},
+	
+	/*
+	 * press Action
+	 * @private
+	 */
+	_pressAction : function() {
+		this._displayPage( SF.Events.SHOW_PRESS );
+	},
+	
+	/*
+	 * product Action
+	 * @private
+	 */
+	_productAction : function(slug) {
+		this._displayPage( SF.Events.SHOW_PRODUCT, slug );
 	},
 	
 	/*
@@ -57,7 +76,7 @@ SF.Router = Backbone.Router.extend({
 	 * display Page
 	 * @private
 	 */
-	_displayPage : function ( callbackEvent ) {
+	_displayPage : function ( callbackEvent, slug ) {
 		
 		if ( !this.isInit ) {
 			this._init( callbackEvent );
@@ -67,7 +86,7 @@ SF.Router = Backbone.Router.extend({
 		if ( this.currentView ) {
 			this.currentView.hide( callbackEvent );
 		} else {
-			SF.EventManager.trigger( callbackEvent );
+			SF.EventManager.trigger( callbackEvent, slug );
 		}
 	},
 	
@@ -94,11 +113,13 @@ SF.Router = Backbone.Router.extend({
 	 */
 	_initEventHandlers : function() {
 		
-		this.eventHandlers[SF.Events.APP_READY] = this._appReady;
-		// this.eventHandlers[SF.Events.SHOW_COLLECTIONS] = this._showCollections;
-    	// this.eventHandlers[SF.Events.SHOW_DETAIL] = this._showDetail;
-    	// this.eventHandlers[SF.Events.SHOW_CART] = this._showCart;
-		// this.eventHandlers[SF.Events.SHOW_CONTACT] = this._showContact;
+		this.eventHandlers[SF.Events.APP_READY] = this._show;
+    	this.eventHandlers[SF.Events.SHOW_ABOUT] = this._show;
+    	this.eventHandlers[SF.Events.SHOW_CART] = this._show;
+		this.eventHandlers[SF.Events.SHOW_COLLECTIONS] = this._show;
+		this.eventHandlers[SF.Events.SHOW_CONTACT] = this._show;
+		this.eventHandlers[SF.Events.SHOW_PRESS] = this._show;
+		this.eventHandlers[SF.Events.SHOW_PRODUCT] = this._show;
 		
 		SF.EventManager.bind(this.eventHandlers);
 	},
@@ -108,7 +129,7 @@ SF.Router = Backbone.Router.extend({
 	 * @private
 	 */
 	_initNav : function() {
-		$(".nav a").click(function(e){
+		$("body").delegate("a[rel=nav], nav a", "click", function(e){
 			e.preventDefault();
 			SF.AppRouter.navigate($(this).attr("href"), true);
 		});	
@@ -118,13 +139,50 @@ SF.Router = Backbone.Router.extend({
 	 * EVENT HANDLERS
 	 */
 		
-	_appReady : function() {
+	_show : function( e, slug ) {
 		
-		var mainView = new SF.View.Main({
-			collection : SF.Data.Collections
-		});
-		mainView.render();
-		this.currentView = mainView;
+		var view;
+		
+		switch ( e.type ) {
+			
+			case SF.Events.APP_READY :
+				view = new SF.View.Main({
+					collection : SF.Data.Collections
+				});
+				SF.AppRouter.navigate("/");
+			break;
+			
+			case SF.Events.SHOW_ABOUT :
+				view = new SF.View.About();
+			break;
+			
+			case SF.Events.SHOW_CART :
+				view = new SF.View.Cart();
+			break;
+
+			case SF.Events.SHOW_COLLECTIONS :
+				view = new SF.View.Collections({
+					collection : SF.Data.Collections,
+					slug : slug
+				});
+			break;
+			
+			case SF.Events.SHOW_CONTACT :
+				view = new SF.View.Contact();
+			break;
+			
+			case SF.Events.SHOW_PRODUCT :
+				view = new SF.View.Product();
+			break;
+
+			case SF.Events.SHOW_PRESS :
+				view = new SF.View.Press();
+			break;
+
+		}
+		
+		view.render();
+		this.currentView = view;
 		
 	}
 	

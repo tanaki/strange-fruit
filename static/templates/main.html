@@ -1,9 +1,20 @@
-<div>
-	<ul>
-		<% _.each(collections, function(collection){ %>
-			<li>
-				<a href="/collection/<%= collection.get('slug') %>"><%= collection.get("title") %></a>
-			</li>
-		<% }); %>
-	</ul>
+
+<div class="main-titles">
+	<h1>Strange Fruit</h1>
+	<h2>Jewellery</h2>
+	<nav>
+		<ul>
+			<li><a href="/collections">Collection</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/press">Press</a></li>
+			<li><a href="/contact">Contact</a></li>
+		</ul>
+	</nav>
+</div>
+<div class="products">
+	<% _.each(collections, function(collection){ %>
+		<% _.each(collection.getProducts(), function(product){ %>
+			<%= product.get('title') %>
+		<% }); %>//
+	<% }); %>
 </div>
