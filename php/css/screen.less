@@ -1,3 +1,6 @@
+/* LESS */
+/* @font : 'Yanone Kaffeesatz', sans-serif; */
+@font : 'Open Sans Condensed', sans-serif;
 
 /* STRANGE FRUIT */
 html,
@@ -147,19 +150,16 @@ body {
 		.menu .menu-btn {
 			background: url(/img/skin/bg_menu.png) no-repeat right top;
 			text-indent:0;
-
 			color:#fff;
 		}
 	}
 
 	/* FOOTER */
 	footer {
-
 		position:absolute;
 		bottom:0;
 		left:0;
 		z-index:3;
-		
 	}
 
 	/* CONTENT */
@@ -175,12 +175,28 @@ body {
 			h1 {
 				font-size:18px;
 				text-transform:uppercase;
-				font-weight:bold;
+				font-family:@font;
+				font-weight:700;
 			}
 			h2 {
 				font-size:18px;
 				text-transform:uppercase;
 				font-weight:normal;
+				font-family:@font;
+				font-weight:400;
+			}
+
+			.btn {
+				display: block;
+				float: left;
+				padding:10px;
+				color:#fff;
+				background: #000;
+			}
+
+			.add-cart {
+				padding-right: 30px;
+				margin:20px 0 0 0;
 			}
 
 		}	
@@ -235,22 +251,30 @@ body {
 						background:url("/img/skin/bg_collection-link.png") no-repeat left top;
 						color:#fff;
 						display:block;
-						width:182px;
-						height:157px;
-						padding:85px 0 0 60px;
+						width:192px;
+						height:162px;
+						padding:80px 0 0 50px;
 						overflow: hidden;
 
 						.title, .subtitle {
 							display:block;
 							text-transform:uppercase;
 							font-size:18px;
+							font-family:@font;
+							font-weight: 300;
 						}
 						.title {
 							font-weight:bold;
+							font-weight: 700;
 						}
 						.text {
+							display: block;
+							width:120px;
+							margin-top:4px;
+
 							font-family:Georgia, Times, serif;
 							font-size:12px;
+							line-height:14px;
 							font-style:italic;
 						}
 
@@ -258,6 +282,9 @@ body {
 							left:0;
 							top:50%;
 							margin-top:-121px;
+
+							width:187px;
+							padding:80px 0 0 55px;
 						}
 
 						&.top-collection {
@@ -270,9 +297,44 @@ body {
 							right:0;
 							top:50%;
 							margin-top:-121px;
+
+							width:182px;
+							padding:80px 0 0 60px;
 						}
 					}
 				}
+			}
+		}
+	}
+
+	/* PRODUCT */
+	.product {
+		#wrapper {
+			.content {
+				position: absolute;
+				top:40px;
+				left:40px;
+				right:40px;
+				bottom:40px;
+
+				.details {
+					font-family: Georgia, Times, serif;
+					font-style:italic;
+					font-size:12px;
+					line-height:14px;
+					color:#323232;
+
+					.desc {
+						width:125px;
+						margin: 5px 0 10px;
+					}
+					.price {
+						font-size:30px;
+						line-height:32px;
+						color:#000;
+						margin-bottom: 5px;
+					}
+				}	
 			}
 		}
 	}
