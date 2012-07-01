@@ -18,7 +18,16 @@
 					<a href="/cart" rel="nav">Cart</a>
 				</div>
 				<div class="menu">
-					<a href="#" class="menu-btn">MENU</a>
+					<a href="#" class="menu-btn">
+						<span>Menu</span>
+					</a>
+					<nav>
+						<ul>
+							<li><a class="about" href="/about"><span>About</span></a></li>
+							<li><a class="collection" href="/collections"><span>Collections</span></a></li>
+							<li><a class="press" href="/press"><span>Press</span></a></li>
+						</ul>
+					</nav>
 				</div>
 			</header>
 			<section class="content">

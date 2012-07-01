@@ -1,90 +1,3 @@
-/* --- BASE --- */
-
-/* Page */
-html {
-  font-size: 100%;
-}
-body {
-  margin: 0;
-  padding: 0;
-  font-size: 1em;
-  font-family:Arial, sans-serif;
-  line-height: 1;
-  color: black;
-  background: white;
-}
-
-/* Titres */
-h1, h2, h3, h4, h5, h6 {
-  margin: 1em 0 .5em 0;
-  line-height: 1.2;
-  font-weight: bold;
-  font-style: normal;
-}
-h1 {
-  font-size: 1.75em;
-}
-h2 {
-  font-size: 1.5em;
-}
-h3 {
-  font-size: 1.25em;
-}
-h4 {
-  font-size: 1em;
-}
-
-/* Listes */
-ul, ol {
-  margin: 0;
-  padding: 0;
-}
-
-/* Paragraphes */
-p {
-  margin: 0;
-}
-address {
-  margin: 0;
-  font-style: normal;
-}
-
-/* Liens */
-a {
-  text-decoration: none;
-}
-a:link {
-  color: #11C;
-}
-a:visited {
-  color: #339;
-}
-a:hover, a:focus, a:active {
-  color: #00F;
-}
-
-/* Pas de bordure autour des images dans les liens */
-a img {
-  border: none;
-}
-
-/* Divers éléments de type en-ligne (8) */
-em {
-  font-style: italic;
-}
-strong {
-  font-weight: bold;
-}
-
-/* Formulaires */
-form, fieldset {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-input, button, select {
-  vertical-align: middle; /* Solution pb. d'alignement. (9) */
-}
 
 /* STRANGE FRUIT */
 html,
@@ -177,7 +90,7 @@ body {
 
 							text-align:center;
 							text-transform:uppercase;
-							.transition(opacity, .1s);
+							/* .transition(opacity, .1s); */
 
 							&.about {
 								top:-81px;
@@ -186,12 +99,12 @@ body {
 							&.collection {
 								top:-10px;
 								left:-161px;
-								.transition-delay(.05s);
+								/* .transition-delay(.05s); */
 							}
 							&.press {
 								top:61px;
 								left:-90px;
-								.transition-delay(.1s);
+								/* .transition-delay(.1s); */
 							}
 							&:hover {
 								background:#444;
@@ -213,11 +126,11 @@ body {
 		.logo,
 		.cart,
 		.menu {
-			.transition();
+			/* .transition(); */
 		}
 		.cart,
 		.menu {
-			.transition-delay();
+			/* .transition-delay(); */
 		}
 
 
@@ -250,16 +163,32 @@ body {
 	}
 
 	/* CONTENT */
-	.content {
-		
-		position:absolute;
-		top:0;
-		left:0;
-		z-index:2;
+	#wrapper {
+		width:100%;
+		height:100%;
 
+		.content {
+			
+			position:relative;
+			z-index:2;
+
+			h1 {
+				font-size:18px;
+				text-transform:uppercase;
+				font-weight:bold;
+			}
+			h2 {
+				font-size:18px;
+				text-transform:uppercase;
+				font-weight:normal;
+			}
+
+		}	
 	}
 
 	/* SPECIFIC PAGE CONTENT */
+
+	/* HOME */
 	.home {
 		header {
 			.logo {
@@ -278,6 +207,73 @@ body {
 		}
 		footer {
 			bottom:-40px;
+		}
+	}
+
+	/* COLLECTIONS */
+	.collections {
+
+		#wrapper {
+			.content {
+				position: absolute;
+				top:40px;
+				left:40px;
+				right:40px;
+				bottom:40px;
+
+				.list-collections {
+					position:absolute;
+					top:0;
+					left:0;
+					right:0;
+					bottom:0;
+					background:url("/img/skin/bg_collections.png") no-repeat center center;
+					background-size: cover;
+
+					a {
+						position:absolute;
+						background:url("/img/skin/bg_collection-link.png") no-repeat left top;
+						color:#fff;
+						display:block;
+						width:182px;
+						height:157px;
+						padding:85px 0 0 60px;
+						overflow: hidden;
+
+						.title, .subtitle {
+							display:block;
+							text-transform:uppercase;
+							font-size:18px;
+						}
+						.title {
+							font-weight:bold;
+						}
+						.text {
+							font-family:Georgia, Times, serif;
+							font-size:12px;
+							font-style:italic;
+						}
+
+						&.left-collection {
+							left:0;
+							top:50%;
+							margin-top:-121px;
+						}
+
+						&.top-collection {
+							left:50%;
+							top:0;
+							margin-left:-121px;
+						}
+
+						&.right-collection {
+							right:0;
+							top:50%;
+							margin-top:-121px;
+						}
+					}
+				}
+			}
 		}
 	}
 

@@ -4,12 +4,20 @@ SF.Router = Backbone.Router.extend({
 	isInit : false,
 	currentView : null,
 	eventHandlers : {},
+
+	mainView : null,
+	aboutView : null,
+	cartView : null,
+	collectionsView : null,
+	contactView : null,
+	pressView : null,
+	productView : null,
 	
 	routes : {
 		"about" : "_aboutAction",
 		"cart" : "_cartAction",
 		"collections" : "_collectionAction",
-		"collection/:slug" : "_collectionAction",
+		"collections/:slug" : "_collectionAction",
 		"contact" : "_contactAction",
 		"press" : "_pressAction",
 		"product/:slug" : "_productAction",
@@ -146,37 +154,47 @@ SF.Router = Backbone.Router.extend({
 		switch ( e.type ) {
 			
 			case SF.Events.APP_READY :
-				view = new SF.View.Main({
-					collection : SF.Data.Collections
-				});
+				if ( !this.mainView ) 
+					this.mainView = new SF.View.Main({
+						collection : SF.Data.Collections
+					});
+				view = this.mainView;
 				SF.AppRouter.navigate("/");
 			break;
 			
 			case SF.Events.SHOW_ABOUT :
-				view = new SF.View.About();
+				if ( !this.aboutView ) this.aboutView = new SF.View.About();
+				view = this.aboutView;
 			break;
 			
 			case SF.Events.SHOW_CART :
-				view = new SF.View.Cart();
+				if ( !this.cartView ) this.cartView = new SF.View.Cart();
+				view = this.cartView;
 			break;
 
 			case SF.Events.SHOW_COLLECTIONS :
-				view = new SF.View.Collections({
-					collection : SF.Data.Collections,
-					slug : slug
-				});
+				console.log( "show collections" );
+				if ( !this.collectionsView ) 
+					this.collectionsView = new SF.View.Collections({
+						collection : SF.Data.Collections
+					});
+				this.collectionsView.setSlug(slug);
+				view = this.collectionsView;
 			break;
 			
 			case SF.Events.SHOW_CONTACT :
-				view = new SF.View.Contact();
+				if ( !this.contactView ) this.contactView = new SF.View.Contact();
+				view = this.contactView;
 			break;
 			
 			case SF.Events.SHOW_PRODUCT :
-				view = new SF.View.Product();
+				if ( !this.productView ) this.productView = new SF.View.Product();
+				view = this.productView;
 			break;
 
 			case SF.Events.SHOW_PRESS :
-				view = new SF.View.Press();
+				if ( !this.pressView ) this.pressView = new SF.View.Press();
+				view = this.pressView;
 			break;
 
 		}

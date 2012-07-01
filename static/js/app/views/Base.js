@@ -10,8 +10,9 @@ SF.View.Base = Backbone.View.extend({
 	slug : "",
 	
 	hide : function (callbackEvent) {
-		$(this.el).hide();
-		if (callbackEvent) SF.EventManager.trigger(callbackEvent);
+		$(this.el).fadeOut(300, function(){
+			if (callbackEvent) SF.EventManager.trigger(callbackEvent);
+		});
 	},
 	
 	render : function() {
@@ -44,6 +45,6 @@ SF.View.Base = Backbone.View.extend({
 			tpl = _.template(this.tpl);
 		
 		$("body").attr("class", "").addClass(this.classname);
-		$(this.el).html( tpl(params) );
+		$(this.el).html( tpl(params) ).hide().fadeIn(300);
 	}
 });
