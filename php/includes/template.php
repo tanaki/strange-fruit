@@ -21,11 +21,7 @@
 
 		<div id="wrapper">
 			<?php include("header.php"); ?>
-
-			<section class="content">
-				<?php include('content/' . $page . '.php'); ?>
-			</section>
-
+			<?php include('content/' . $page . '.php'); ?>
 			<?php include("footer.php"); ?>
 		</div>
 

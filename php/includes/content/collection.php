@@ -1,1 +1,3 @@
-Collection detail
+<section class="content">
+	Collection detail
+</section>

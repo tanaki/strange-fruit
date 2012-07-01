@@ -1,6 +1,7 @@
 /* LESS */
 /* @font : 'Yanone Kaffeesatz', sans-serif; */
 @font : 'Open Sans Condensed', sans-serif;
+@textfont : Georgia, Times, serif;
 
 /* STRANGE FRUIT */
 html,
@@ -169,7 +170,11 @@ body {
 
 		.content {
 			
-			position:relative;
+			position: absolute;
+			top:40px;
+			left:40px;
+			right:40px;
+			bottom:40px;
 			z-index:2;
 
 			h1 {
@@ -199,6 +204,45 @@ body {
 				margin:20px 0 0 0;
 			}
 
+			.three-cols {
+				width:80%;
+				height:90%;
+				margin:4% auto 0;
+				max-width: 1200px;
+				min-width: 650px;
+
+				.col {
+					width:28%;
+					margin-right:8%;
+					float: left;
+
+					h3 {
+						font-family: @font;
+						font-weight: 300;
+						font-size:18px;
+						text-transform: uppercase;
+						margin-bottom: 5px;
+						padding-bottom: 10px;
+						border-bottom: 1px solid #000;
+					}
+
+					p, 
+					.address {
+						font-size:12px;
+						line-height: 14px;
+						font-family: @textfont;
+						font-style: italic;
+					}
+					p {
+						text-align: justify;
+					}
+
+					&:last-child {
+						margin-right:0;
+					}
+				}
+			}
+
 		}	
 	}
 
@@ -224,18 +268,24 @@ body {
 		footer {
 			bottom:-40px;
 		}
+		#wrapper {
+			.content {
+				top:0;
+				left:0;
+				right:0;
+				bottom:0;
+			}
+		}
 	}
 
 	/* COLLECTIONS */
 	.collections {
 
 		#wrapper {
+			background:url("/img/skin/bg_collections.png") no-repeat center center;
+			background-size: cover;
+
 			.content {
-				position: absolute;
-				top:40px;
-				left:40px;
-				right:40px;
-				bottom:40px;
 
 				.list-collections {
 					position:absolute;
@@ -243,8 +293,6 @@ body {
 					left:0;
 					right:0;
 					bottom:0;
-					background:url("/img/skin/bg_collections.png") no-repeat center center;
-					background-size: cover;
 
 					a {
 						position:absolute;
@@ -272,7 +320,7 @@ body {
 							width:120px;
 							margin-top:4px;
 
-							font-family:Georgia, Times, serif;
+							font-family: @textfont;
 							font-size:12px;
 							line-height:14px;
 							font-style:italic;
@@ -311,22 +359,25 @@ body {
 	.product {
 		#wrapper {
 			.content {
-				position: absolute;
-				top:40px;
-				left:40px;
-				right:40px;
-				bottom:40px;
 
 				.details {
-					font-family: Georgia, Times, serif;
+					position:absolute;
+					top:0;
+					left:0;
+					right:0;
+					bottom:0;
+
+					font-family: @textfont;
 					font-style:italic;
 					font-size:12px;
 					line-height:14px;
 					color:#323232;
+					background:url('/img/') no-repeat center center;
+					background-size: cover;
 
 					.desc {
 						width:125px;
-						margin: 5px 0 10px;
+						margin: 45px 0 10px;
 					}
 					.price {
 						font-size:30px;
@@ -334,11 +385,87 @@ body {
 						color:#000;
 						margin-bottom: 5px;
 					}
+
+					.thumbnails {
+						position: absolute;
+						left:0;
+						bottom:20px;
+
+						ul {
+							overflow: hidden;
+							li {
+								display: block;
+								float: left;
+								a {
+									display: block;
+									border:1px solid #e4e4e4;
+								}
+								&.selected {
+									a {
+										background:#ccc;
+										img {
+											opacity: 0.5;
+										}
+									}
+								}
+							}
+						}
+					}
+					.share {
+						position: absolute;
+						left:0;
+						bottom:0;
+					}
 				}	
 			}
 		}
 	}
 
+	/* ABOUT */
+	.about {
+		#wrapper {
+			.content {
+				overflow: hidden;
+				.three-cols {
+					.col {
+						.address {
+							margin: 10px 0 25px;
+							.name {
+								a {
+									color:#000;
+									font-size:16px;
+									font-weight: bold;
+								}
+							}
+							.store-details {
+								margin-top: 10px;
+								.store-title {
+									font-weight: bold;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* INFOS */
+	.infos {
+		#wrapper {
+			.content {
+				.three-cols {
+					.col {
+						h3 {
+							&.top-margin {
+								margin-top:20px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
 	/* MIXINS */
 	.transition ( @property : all, @duration : .3s, @effect : linear ) {

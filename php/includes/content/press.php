@@ -1,1 +1,3 @@
-press and magazines
+<section class="content">
+	press and magazines
+</section>
