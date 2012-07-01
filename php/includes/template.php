@@ -13,9 +13,9 @@
 		<script src="js/libs/html5shiv.js"></script>
 		<![endif]-->
 
-		<link rel="stylesheet" type="text/css" href="/css/base.css">
-		<link rel="stylesheet/less" type="text/css" href="/css/screen.less">
-		<script src="/js/libs/less.min.js" type="text/javascript"></script>
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet/less" type="text/css" href="css/screen.less">
+		<script src="js/libs/less.min.js" type="text/javascript"></script>
 	</head>
 	<body class="<?php echo $page; ?>">
 
