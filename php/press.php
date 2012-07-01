@@ -1,7 +1,7 @@
 <?php
 
 	$page = "press";
-	$title = "Press and Magazines - ";
+	$title = "Media and Press - ";
 
 	include("includes/template.php");
 ?>

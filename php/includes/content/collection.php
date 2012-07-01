@@ -1,3 +1,8 @@
 <section class="content">
-	Collection detail
+	<h1>
+		Fine Collection
+	</h1>
+	<h2>
+		Overview
+	</h2>
 </section>

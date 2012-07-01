@@ -1,3 +1,8 @@
 <section class="content">
-	press and magazines
+	<h1>
+		Media and Press
+	</h1>
+	<h2>
+		Magazine
+	</h2>
 </section>
