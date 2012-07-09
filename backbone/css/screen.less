@@ -35,6 +35,21 @@ body {
 	}
 
 	.content {
+		.coming-soon {
+			h5 {
+				text-align: center;
+				text-transform: uppercase;
+				font-family: @font;
+				font-weight: 700;
+				font-size: 24px;
+				margin: 100px 0 50px;
+			}
+			p {
+				text-align: center;
+				font-family: @textfont;
+			}
+		}
+
 		.three-cols {
 			.col {
 
@@ -160,6 +175,10 @@ body {
 				top:0;
 				left:50%;
 				margin-left:-41px;
+
+				a {
+					display: block;
+				}
 			}
 
 			.cart {
@@ -259,11 +278,11 @@ body {
 			.logo,
 			.cart,
 			.menu {
-				/* .transition(); */
+				.transition();
 			}
 			.cart,
 			.menu {
-				/* .transition-delay(); */
+				.transition-delay();
 			}
 
 
@@ -353,7 +372,7 @@ body {
 				}
 			}
 			footer {
-				bottom:-40px;
+				/*bottom:-40px;*/
 			}
 			#wrapper {
 				.content {
@@ -420,6 +439,7 @@ body {
 
 								width:187px;
 								padding:80px 0 0 55px;
+
 							}
 
 							&.top-collection {
@@ -631,6 +651,38 @@ body {
 							margin-right: 0;
 							margin-top: 20px;
 						}
+					}
+				}
+			}
+		}
+		.collections {
+			.list-collections {
+				a {
+					display: block;
+					margin:10px 0;
+					padding: 10px 20px 10px 0;
+					border-top: 1px solid #000;
+
+					color:#000;
+					font-family: @textfont;
+					background: url(/img/skin/mobile_arrow.png) no-repeat center right;
+
+					.title {
+						display: block;
+						font-family: @font;
+						text-transform: uppercase;
+						font-weight: 700;
+						margin:0 0 5px;
+					}
+					.subtitle {
+						display: block;
+						font-family: @font;
+						text-transform: uppercase;
+						margin:0 0 10px;
+					}
+					.text {
+						display: block;
+						font-style: italic;
 					}
 				}
 			}

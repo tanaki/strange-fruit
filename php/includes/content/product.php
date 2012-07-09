@@ -5,7 +5,7 @@
 	<h2>
 		Silver Bear Plate
 	</h2>
-	<div class="details" style="background-image:url('<?php echo $urlBG; ?>');">
+	<div class="details" style="background-image:url('img/products/silver/bear.png');">
 		<div class="desc">
 			Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 		</div>

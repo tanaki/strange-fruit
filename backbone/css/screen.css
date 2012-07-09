@@ -1,0 +1,546 @@
+/* LESS */
+/* @font : 'Yanone Kaffeesatz', sans-serif; */
+/* STRANGE FRUIT */
+body {
+  background: url(/img/skin/bg_grid.png) repeat center center;
+}
+#wrapper h1 {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+}
+#wrapper h2 {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 400;
+}
+#wrapper .btn {
+  display: block;
+  float: left;
+  padding: 10px;
+  color: #fff;
+  background: #000;
+}
+#wrapper .content .coming-soon h5 {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin: 100px 0 50px;
+}
+#wrapper .content .coming-soon p {
+  text-align: center;
+  font-family: Georgia, Times, serif;
+}
+#wrapper .content .three-cols .col h3 {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+#wrapper .content .three-cols .col h3.top-margin {
+  margin-top: 20px;
+}
+#wrapper .content .three-cols .col p,
+#wrapper .content .three-cols .col .address {
+  font-size: 12px;
+  line-height: 14px;
+  font-family: Georgia, Times, serif;
+  font-style: italic;
+}
+#wrapper .content .three-cols .col p {
+  text-align: justify;
+}
+#wrapper .content .three-cols .col .address {
+  margin: 10px 0 25px;
+}
+#wrapper .content .three-cols .col .address .name a {
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+}
+#wrapper .content .three-cols .col .address .store-details {
+  margin-top: 10px;
+}
+#wrapper .content .three-cols .col .address .store-details .store-title {
+  font-weight: bold;
+}
+#wrapper .content .three-cols .col .accordion {
+  font-family: Georgia, Times, serif;
+  font-style: italic;
+}
+#wrapper .content .three-cols .col .accordion .question a {
+  background: #000;
+  color: #fff;
+  display: block;
+  padding: 7px 20px 10px 10px;
+  margin-bottom: 1px;
+}
+#wrapper .content .three-cols .col .accordion .question .answer {
+  display: none;
+  margin: 5px 0 10px;
+  font-size: 14px;
+}
+#wrapper .content .three-cols .col .accordion .question.open a {
+  background: #7f7f7f;
+}
+#wrapper .content .three-cols .col .accordion .question.open .answer {
+  display: block;
+}
+#wrapper .content .three-cols .col .pdf {
+  margin-top: 15px;
+}
+#wrapper .content .three-cols .col .pdf li {
+  display: block;
+  background: url(/img/skin/pdf.png) no-repeat left top;
+  padding-left: 22px;
+  margin-bottom: 8px;
+}
+#wrapper .content .three-cols .col .pdf li a {
+  color: #000;
+  font-size: 12px;
+  font-family: Georgia, Times, serif;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+}
+#wrapper .content .three-cols .col:last-child {
+  margin-right: 0;
+}
+/* Desktop Layout */
+@media screen and (min-width: 801px) {
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  /* HEADER */
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+  }
+  header .logo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -41px;
+  }
+  header .logo a {
+    display: block;
+  }
+  header .cart {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -41px;
+  }
+  header .menu {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -41px;
+  }
+  header .menu .menu-btn span {
+    display: block;
+    padding: 34px 0 0 8px;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  header .menu.open nav ul li a,
+  header .menu:hover nav ul li a {
+    display: block;
+    opacity: 1;
+  }
+  header .menu nav {
+    position: absolute;
+    top: 0;
+    right: 0px;
+  }
+  header .menu nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  header .menu nav ul li {
+    margin: 0;
+    padding: 0;
+  }
+  header .menu nav ul li a {
+    position: absolute;
+    display: block;
+    opacity: 0;
+    width: 100px;
+    height: 100px;
+    background: #000;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    text-align: center;
+    text-transform: uppercase;
+    /* .transition(opacity, .1s); */
+  
+  }
+  header .menu nav ul li a.about {
+    top: -81px;
+    left: -90px;
+  }
+  header .menu nav ul li a.collection {
+    top: -10px;
+    left: -161px;
+    /* .transition-delay(.05s); */
+  
+  }
+  header .menu nav ul li a.press {
+    top: 61px;
+    left: -90px;
+    /* .transition-delay(.1s); */
+  
+  }
+  header .menu nav ul li a:hover {
+    background: #444;
+    color: #ddd;
+  }
+  header .menu nav ul li a span {
+    display: block;
+    margin: 42px 0 0;
+    color: #fff;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  header .logo,
+  header .cart,
+  header .menu {
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+  }
+  header .cart,
+  header .menu {
+    -webkit-transition-delay: 0.15s;
+    -moz-transition-delay: 0.15s;
+    -ms-transition-delay: 0.15s;
+    -o-transition-delay: 0.15s;
+    transition-delay: 0.15s;
+  }
+  header .cart a,
+  header .menu .menu-btn {
+    display: block;
+    width: 40px;
+    height: 82px;
+    overflow: hidden;
+    background: url(/img/skin/bg_cart.png) no-repeat left top;
+    text-indent: -5000px;
+  }
+  header .menu .menu-btn {
+    background: url(/img/skin/bg_menu.png) no-repeat right top;
+    text-indent: 0;
+    color: #fff;
+  }
+  /* FOOTER */
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+  }
+  /* CONTENT */
+  #wrapper {
+    width: 100%;
+    height: 100%;
+  }
+  #wrapper .content {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    z-index: 2;
+  }
+  #wrapper .content .add-cart {
+    padding-right: 30px;
+    margin: 20px 0 0 0;
+  }
+  #wrapper .content .three-cols {
+    width: 80%;
+    height: 90%;
+    margin: 4% auto 0;
+    max-width: 1200px;
+    min-width: 650px;
+  }
+  #wrapper .content .three-cols .col {
+    width: 28%;
+    margin-right: 8%;
+    float: left;
+  }
+  #wrapper .content .three-cols .col-2 {
+    display: block;
+    float: left;
+    width: 68%;
+  }
+  /* SPECIFIC PAGE CONTENT */
+  /* HOME */
+  .home header .logo {
+    top: -40px;
+  }
+  .home header .cart {
+    left: -40px;
+  }
+  .home header .menu {
+    right: -40px;
+  }
+  .home header .menu nav {
+    display: none;
+  }
+  .home footer {
+    /*bottom:-40px;*/
+  
+  }
+  .home #wrapper .content {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  /* COLLECTIONS */
+  .collections #wrapper {
+    background: url("/img/skin/bg_collections.png") no-repeat center center;
+    background-size: cover;
+  }
+  .collections #wrapper .content .list-collections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .collections #wrapper .content .list-collections a {
+    position: absolute;
+    background: url("/img/skin/bg_collection-link.png") no-repeat left top;
+    color: #fff;
+    display: block;
+    width: 192px;
+    height: 162px;
+    padding: 80px 0 0 50px;
+    overflow: hidden;
+  }
+  .collections #wrapper .content .list-collections a .title,
+  .collections #wrapper .content .list-collections a .subtitle {
+    display: block;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 300;
+  }
+  .collections #wrapper .content .list-collections a .title {
+    font-weight: bold;
+    font-weight: 700;
+  }
+  .collections #wrapper .content .list-collections a .text {
+    display: block;
+    width: 120px;
+    margin-top: 4px;
+    font-family: Georgia, Times, serif;
+    font-size: 12px;
+    line-height: 14px;
+    font-style: italic;
+  }
+  .collections #wrapper .content .list-collections a.left-collection {
+    left: 0;
+    top: 50%;
+    margin-top: -121px;
+    width: 187px;
+    padding: 80px 0 0 55px;
+  }
+  .collections #wrapper .content .list-collections a.top-collection {
+    left: 50%;
+    top: 0;
+    margin-left: -121px;
+  }
+  .collections #wrapper .content .list-collections a.right-collection {
+    right: 0;
+    top: 50%;
+    margin-top: -121px;
+    width: 182px;
+    padding: 80px 0 0 60px;
+  }
+  /* PRODUCT */
+  .product #wrapper .content .details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-family: Georgia, Times, serif;
+    font-style: italic;
+    font-size: 12px;
+    line-height: 14px;
+    color: #323232;
+    background: url('/img/') no-repeat center center;
+    background-size: cover;
+  }
+  .product #wrapper .content .details .desc {
+    width: 125px;
+    margin: 45px 0 10px;
+  }
+  .product #wrapper .content .details .price {
+    font-size: 30px;
+    line-height: 32px;
+    color: #000;
+    margin-bottom: 5px;
+  }
+  .product #wrapper .content .details .thumbnails {
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+  }
+  .product #wrapper .content .details .thumbnails ul {
+    overflow: hidden;
+  }
+  .product #wrapper .content .details .thumbnails ul li {
+    display: block;
+    float: left;
+  }
+  .product #wrapper .content .details .thumbnails ul li a {
+    display: block;
+    border: 1px solid #e4e4e4;
+  }
+  .product #wrapper .content .details .thumbnails ul li.selected a {
+    background: #ccc;
+  }
+  .product #wrapper .content .details .thumbnails ul li.selected a img {
+    opacity: 0.5;
+  }
+  .product #wrapper .content .details .share {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  /* INFOS */
+  .infos #wrapper .content .three-cols .col.faq {
+    width: 25%;
+  }
+  .infos #wrapper .content .three-cols .col.delivery-terms {
+    width: 41%;
+  }
+  .infos #wrapper .content .three-cols .col.ring-sizing {
+    width: 18%;
+  }
+  /* PRESS */
+  .press #wrapper .content .three-cols .col {
+    margin-right: 4%;
+  }
+}
+/* Mobile Layout */
+@media screen and (max-width: 801px) {
+  header .logo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  header .logo a {
+    display: block;
+  }
+  header .menu .menu-btn {
+    display: none;
+  }
+  header .menu nav {
+    overflow: hidden;
+  }
+  header .menu nav ul li a {
+    display: block;
+    width: 32%;
+    margin-right: 1%;
+    float: left;
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+    background: #000;
+    margin-bottom: 1px;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+  }
+  header .cart {
+    display: none;
+  }
+  #wrapper {
+    margin: 0 auto;
+    width: 90%;
+  }
+  #wrapper .content h1 {
+    margin-top: 20px;
+  }
+  #wrapper .content h2 {
+    margin-bottom: 20px;
+  }
+  #wrapper .content .three-cols {
+    height: auto;
+    min-width: 0;
+    max-width: 100%;
+  }
+  #wrapper .content .three-cols .col {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 20px;
+  }
+  #wrapper .content .three-cols .col:first-child {
+    margin-top: 0;
+  }
+  #wrapper .content .three-cols .col-2 {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+  }
+  .infos #wrapper .content .three-cols .col.faq,
+  .infos #wrapper .content .three-cols .col.delivery-terms,
+  .infos #wrapper .content .three-cols .col.ring-sizing {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 20px;
+  }
+  .collections .list-collections a {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px 10px 0;
+    border-top: 1px solid #000;
+    color: #000;
+    font-family: Georgia, Times, serif;
+    background: url(/img/skin/mobile_arrow.png) no-repeat center right;
+  }
+  .collections .list-collections a .title {
+    display: block;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 0 5px;
+  }
+  .collections .list-collections a .subtitle {
+    display: block;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  .collections .list-collections a .text {
+    display: block;
+    font-style: italic;
+  }
+}
+/* MIXINS */

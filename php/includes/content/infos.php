@@ -8,7 +8,7 @@
 	<div class="three-cols">
 		<div class="col faq">
 			<h3>F.A.Q</h3>
-			<ul>
+			<ul class="accordion">
 				<li class="question open">
 					<a href="#">Lorem ipsum dolor sit amet, consectetur ?</a>
 					<span class="answer">

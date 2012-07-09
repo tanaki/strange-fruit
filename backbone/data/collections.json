@@ -1,0 +1,58 @@
+{
+	"collections" : [
+		{
+			"id" : 0,
+			"slug" : "fine-collection",
+			"title" : "Fine Collection",
+			"description" : "Lorem ipsum",
+			"products" : [
+				{
+					"id" : 0,
+					"title" : "fine ring",
+					"slug" : "fine-ring"
+				},
+				{
+					"id" : 1,
+					"title" : "fine neckless",
+					"slug" : "fine-neckless"
+				}
+			]
+		},
+		{
+			"id" : 1,
+			"slug" : "silver-collection",
+			"title" : "Silver Collection",
+			"description" : "Lorem ipsum",
+			"products" : [
+				{
+					"id" : 0,
+					"title" : "silver ring",
+					"slug" : "silver-ring"
+				},
+				{
+					"id" : 1,
+					"title" : "silver neckless",
+					"slug" : "silver-neckless"
+				}
+			]
+		},
+		{
+			"id" : 2,
+			"slug" : "bespoke-collection",
+			"title" : "Bespoke Collection",
+			"description" : "Lorem ipsum",
+			"products" : [
+				{
+					"id" : 0,
+					"title" : "bespoke ring",
+					"slug" : "bespoke-ring"
+				},
+				{
+					"id" : 1,
+					"title" : "bespoke neckless",
+					"slug" : "bespoke-neckless"
+				}
+			]
+		}
+	]
+}
