@@ -6,12 +6,12 @@ SF.View.Collections = SF.View.Base.extend({
 	template_url : "/templates/collections.html",
 
 	events: {
-		"click .collection-item a": "update"
+		"click .list-collections a": "update"
 	},
 
 	update : function(e) {
 		e.preventDefault();
-		SF.AppRouter.navigate( $(e.currentTarget).attr("href"), true );
+		SF.AppRouter.navigate( $(e.currentTarget).attr("href"), {trigger: true} );
 	},
 
 	setSlug : function(slug) {

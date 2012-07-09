@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 
     watch: {
       files: ['js/**/*.js', 'css/screen.less'],
-      tasks: 'default'
+      tasks: 'concat'
     }
   });
 

@@ -1,26 +1,51 @@
-<h1>
-	Strange Fruit Collections
-</h1>
-<div class="list-collections">
-	<a href="collections/silver-collection" class="left-collection">
-		<span class="title">Silver Collection</span>
-		<span class="subtitle">Silver Plate Bear</span>
-		<span class="text">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-		</span>
-	</a>
-	<a href="collections/bespoke-collection" class="top-collection">
-		<span class="title">Bespoke Collection</span>
-		<span class="subtitle">Silver Plate Bear</span>
-		<span class="text">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-		</span>
-	</a>
-	<a href="collections/fine-collection" class="right-collection">
-		<span class="title">Fine Collection</span>
-		<span class="subtitle">Silver Plate Bear</span>
-		<span class="text">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-		</span>
-	</a>
-</div>
+
+<% if ( !slug ) { %>
+	<h1>
+		Strange Fruit Collections
+	</h1>
+	<div class="list-collections">
+		<a href="collections/silver-collection" class="left-collection">
+			<span class="title">Silver Collection</span>
+			<span class="subtitle">Silver Plate Bear</span>
+			<span class="text">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			</span>
+		</a>
+		<a href="collections/bespoke-collection" class="top-collection">
+			<span class="title">Bespoke Collection</span>
+			<span class="subtitle">Silver Plate Bear</span>
+			<span class="text">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			</span>
+		</a>
+		<a href="collections/fine-collection" class="right-collection">
+			<span class="title">Fine Collection</span>
+			<span class="subtitle">Silver Plate Bear</span>
+			<span class="text">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+			</span>
+		</a>
+	</div>
+<% } else { %>
+	<h1>
+		Strange Fruit Collections
+	</h1>
+	<h2>
+		Silver Collection
+	</h2>
+
+	<div class="list-collections">
+		<a href="product/ring" class="left-collection">
+			<span class="title">Silver Ring</span>
+			<span class="subtitle">£200</span>
+		</a>
+		<a href="product/bear" class="top-collection">
+			<span class="title">Silver Bear</span>
+			<span class="subtitle">£320</span>
+		</a>
+		<a href="product/neckless" class="right-collection">
+			<span class="title">Silver Neckless</span>
+			<span class="subtitle">£300</span>
+		</a>
+	</div>
+<% } %>

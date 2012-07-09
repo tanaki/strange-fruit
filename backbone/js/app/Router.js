@@ -85,9 +85,9 @@ SF.Router = Backbone.Router.extend({
 	 * @private
 	 */
 	_displayPage : function ( callbackEvent, slug ) {
-		
+
 		if ( !this.isInit ) {
-			this._init( callbackEvent );
+			this._init( callbackEvent, slug );
 			return;
 		}
 		
@@ -102,7 +102,7 @@ SF.Router = Backbone.Router.extend({
 	 * init app
 	 * @private
 	 */
-	_init : function( callbackEvent ) {
+	_init : function( callbackEvent, slug ) {
 		this.isInit = true;
 		
 		this._initEventHandlers();
@@ -111,7 +111,7 @@ SF.Router = Backbone.Router.extend({
 		var self = this;
 		SF.Data.Collections = new SF.Collection.CollectionCollection();
 		SF.Data.Collections.fetch().success(function(){
-			self._displayPage( callbackEvent );
+			self._displayPage( callbackEvent, slug );
 		});
 	},
 	
@@ -148,7 +148,7 @@ SF.Router = Backbone.Router.extend({
 	 */
 		
 	_show : function( e, slug ) {
-		
+
 		var view;
 		
 		switch ( e.type ) {
@@ -173,7 +173,6 @@ SF.Router = Backbone.Router.extend({
 			break;
 
 			case SF.Events.SHOW_COLLECTIONS :
-				console.log( "show collections" );
 				if ( !this.collectionsView ) 
 					this.collectionsView = new SF.View.Collections({
 						collection : SF.Data.Collections

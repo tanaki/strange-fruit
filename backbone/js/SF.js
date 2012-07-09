@@ -124,9 +124,9 @@ SF.Router = Backbone.Router.extend({
 	 * @private
 	 */
 	_displayPage : function ( callbackEvent, slug ) {
-		
+
 		if ( !this.isInit ) {
-			this._init( callbackEvent );
+			this._init( callbackEvent, slug );
 			return;
 		}
 		
@@ -141,7 +141,7 @@ SF.Router = Backbone.Router.extend({
 	 * init app
 	 * @private
 	 */
-	_init : function( callbackEvent ) {
+	_init : function( callbackEvent, slug ) {
 		this.isInit = true;
 		
 		this._initEventHandlers();
@@ -150,7 +150,7 @@ SF.Router = Backbone.Router.extend({
 		var self = this;
 		SF.Data.Collections = new SF.Collection.CollectionCollection();
 		SF.Data.Collections.fetch().success(function(){
-			self._displayPage( callbackEvent );
+			self._displayPage( callbackEvent, slug );
 		});
 	},
 	
@@ -187,7 +187,7 @@ SF.Router = Backbone.Router.extend({
 	 */
 		
 	_show : function( e, slug ) {
-		
+
 		var view;
 		
 		switch ( e.type ) {
@@ -212,7 +212,6 @@ SF.Router = Backbone.Router.extend({
 			break;
 
 			case SF.Events.SHOW_COLLECTIONS :
-				console.log( "show collections" );
 				if ( !this.collectionsView ) 
 					this.collectionsView = new SF.View.Collections({
 						collection : SF.Data.Collections
@@ -431,6 +430,7 @@ SF.View.Base = Backbone.View.extend({
 	_display : function(data) {
 
 		var 
+			self = this,
 			models = this.collection ? this.collection.models : null,
 			params = {
 				collections : models,
@@ -439,7 +439,13 @@ SF.View.Base = Backbone.View.extend({
 			tpl = _.template(this.tpl);
 		
 		$("body").attr("class", "").addClass(this.classname);
-		$(this.el).html( tpl(params) ).hide().fadeIn(300);
+		$(this.el).html( tpl(params) ).hide().fadeIn(300, function(){
+			self.onFadeIn(self);
+		});
+	},
+
+	onFadeIn : function(self){
+
 	}
 });
 
@@ -466,12 +472,12 @@ SF.View.Collections = SF.View.Base.extend({
 	template_url : "/templates/collections.html",
 
 	events: {
-		"click .collection-item a": "update"
+		"click .list-collections a": "update"
 	},
 
 	update : function(e) {
 		e.preventDefault();
-		SF.AppRouter.navigate( $(e.currentTarget).attr("href"), true );
+		SF.AppRouter.navigate( $(e.currentTarget).attr("href"), {trigger: true} );
 	},
 
 	setSlug : function(slug) {
@@ -508,6 +514,32 @@ SF.View.Product = SF.View.Base.extend({
 
 	classname : "product",
 	template_name : "template_product",
-	template_url : "/templates/product.html"
+	template_url : "/templates/product.html",
+
+	onFadeIn : function(self){
+		self.initThumbnails();
+	},
+
+	initThumbnails : function() {
+
+		var 
+			thumbnails = $(".thumbnails", this.el),
+			details = $(".details", this.el);
+
+		$("a", thumbnails).click(function(e){
+			e.preventDefault();
+
+			if ( $(this).parent().hasClass("selected") ) return;
+
+			$(".selected", thumbnails).removeClass("selected");
+			$(this).parent().addClass("selected");
+			
+			var img = new Image();
+			img.onload = function() {
+				details.css("backgroundImage", "url(" + img.src + ")");
+			}
+			img.src = $(this).attr("href");
+		});
+	}
 	
 });
