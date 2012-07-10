@@ -14,7 +14,8 @@
 		<![endif]-->
 
 		<link rel="stylesheet" type="text/css" href="/css/base.css">
-		<link rel="stylesheet" type="text/css" href="/css/screen.css">
+		<link rel="stylesheet/less" type="text/css" href="/css/screen.less">
+		<script type="text/javascript" src="/js/libs/less.min.js"></script>
 	</head>
 	<body class="home">
 
@@ -62,6 +63,7 @@
         <script type="text/javascript" src="/js/libs/underscore-min.js"></script>
         <script type="text/javascript" src="/js/libs/backbone-min.js"></script>
 		<script type="text/javascript" src="/js/libs/jquery.loadTemplate.js"></script>
+		<script type="text/javascript" src="/js/libs/swipe.min.js"></script>
 
 		<script type="text/javascript" src="/js/SF.js"></script>
 	<!--

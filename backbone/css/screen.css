@@ -542,5 +542,18 @@ body {
     display: block;
     font-style: italic;
   }
+  .collections .detail-collection a {
+    padding-bottom: 0;
+  }
+  .collections .detail-collection a .subtitle {
+    margin-bottom: 0;
+  }
+  .product .details {
+    background: none !important;
+    font-family: Georgia, Times, serif;
+  }
+  .product .thumbnails a {
+    display: block;
+  }
 }
 /* MIXINS */

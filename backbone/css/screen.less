@@ -97,6 +97,8 @@ body {
 				.accordion {
 					font-family: @textfont;
 					font-style: italic;
+					opacity: 0;
+					.transition();
 
 					.question {
 						a {
@@ -107,17 +109,22 @@ body {
 							margin-bottom: 1px;
 						}
 						.answer {
-							display: none;
-							margin: 5px 0 10px;
+							display: block;
+							overflow: hidden;
 							font-size:14px;
+
+							span {
+								display: block;
+								padding: 8px 0 15px;
+							}
+						}
+						.ready{
+							.transition(all, 0.3s, ease-out);
 						}
 
 						&.open {
 							a {
 								background:#7f7f7f;
-							}
-							.answer {
-								display: block;
 							}
 						}
 					}
@@ -683,6 +690,50 @@ body {
 					.text {
 						display: block;
 						font-style: italic;
+					}
+				}
+			}
+
+			.detail-collection {
+				a {
+					padding-bottom: 0;
+					.subtitle {
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+		.product {
+			#wrapper {
+				.content {
+					h2 {
+						margin-bottom: 10px;
+					}
+					.details {
+						background: none !important;
+						font-family: @textfont;
+						font-style: italic;
+						font-size: 14px;
+
+						.desc {
+							margin-bottom: 10px;
+						}
+						.price {
+							font-size: 26px;
+							margin-bottom: 7px;
+						}
+
+					}
+					.thumbnails {
+						span {
+							display: none;
+						}
+						a {
+							display: block;
+							img {
+								width: 100%;
+							}
+						}
 					}
 				}
 			}
