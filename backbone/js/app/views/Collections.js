@@ -16,6 +16,12 @@ SF.View.Collections = SF.View.Base.extend({
 
 	setSlug : function(slug) {
 		this.slug = slug;
+	},
+
+	onFadeIn : function(self) {
+		
+		$("body").addClass("visible");
+
 	}
 	
 });

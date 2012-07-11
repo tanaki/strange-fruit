@@ -35,7 +35,7 @@ SF.View.Base = Backbone.View.extend({
 	},
 	
 	_display : function(data) {
-
+		
 		var 
 			self = this,
 			models = this.collection ? this.collection.models : null,
@@ -46,7 +46,7 @@ SF.View.Base = Backbone.View.extend({
 			tpl = _.template(this.tpl);
 		
 		$("body").attr("class", "").addClass(this.classname);
-		$(this.el).html( tpl(params) ).hide().fadeIn(300, function(){
+		$(this.el).html( tpl(params) ).hide().fadeIn(500, function(){
 			self.onFadeIn(self);
 		});
 	},

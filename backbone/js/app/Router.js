@@ -12,6 +12,8 @@ SF.Router = Backbone.Router.extend({
 	infosView : null,
 	pressView : null,
 	productView : null,
+
+	imageLoaded : [],
 	
 	routes : {
 		"about" : "_aboutAction",
@@ -103,16 +105,59 @@ SF.Router = Backbone.Router.extend({
 	 * @private
 	 */
 	_init : function( callbackEvent, slug ) {
+
 		this.isInit = true;
 		
 		this._initEventHandlers();
 		this._initNav();
 
-		var self = this;
-		SF.Data.Collections = new SF.Collection.CollectionCollection();
-		SF.Data.Collections.fetch().success(function(){
-			self._displayPage( callbackEvent, slug );
+		var 
+			self = this,
+			images = [
+				"/img/logo.png",
+				"/img/skin/bg_cart.png",
+				"/img/skin/bg_collection-link.png",
+				"/img/skin/bg_collections.png",
+				"/img/skin/bg_grid.png",
+				"/img/skin/bg_menu.png",
+				"/img/skin/pdf.png"
+			];
+
+		self._preloadImages( images, function(){
+
+			SF.Data.Images = self.imageLoaded;
+			self.imageLoaded = [];
+			$(".loading").hide();
+
+			SF.Data.Collections = new SF.Collection.CollectionCollection();
+			SF.Data.Collections.fetch().success(function(){
+				self._displayPage( callbackEvent, slug );
+			});
 		});
+	},
+
+	_preloadImages : function ( imageArray, callback ) {
+
+		var 
+			self = this,
+			img = new Image();
+
+		img.onload = function() {
+
+			self.imageLoaded.push(img);
+			imageArray.shift();
+
+			if ( imageArray.length > 0 ) {
+				self._preloadImages( imageArray, callback );
+			} else {
+				callback();
+			}
+
+			var percent = (self.imageLoaded.length * 100) / (imageArray.length + self.imageLoaded.length);
+			$(".loading").text("Loading... " + Math.round(percent) + "%" );
+		}
+		img.src = imageArray[0];
+
 	},
 	
 	/*

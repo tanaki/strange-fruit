@@ -15,37 +15,51 @@ SF.View.Product = SF.View.Base.extend({
 			thumbnails = $(".thumbnails", this.el),
 			details = $(".details", this.el);
 
-		if ( $(window).width() > 800 ) {
 
-			$("a", thumbnails).click(function(e){
-				e.preventDefault();
+		$("a", thumbnails).click(function(e){
+			e.preventDefault();
 
-				if ( $(this).parent().hasClass("selected") ) return;
+			if ( $(this).parent().hasClass("selected") ) return;
 
-				$(".selected", thumbnails).removeClass("selected");
-				$(this).parent().addClass("selected");
-				
+			var 
+				el = $(this),
+				loader = $(".loading"),
+				href = el.attr("href"),
+				dot = "/img/skin/dot.gif";
+
+			$(".selected", thumbnails).removeClass("selected");
+			el.parent().addClass("selected");
+			
+			if ( el.data("loaded") ) {
+
+				loader.stop(true, true).fadeOut();
+				details
+					.css("backgroundImage", "url(" + dot + ")")
+					.css("backgroundImage", "url(" + href + ")");
+
+			} else {
+
+				loader.stop(true, true).text("Loading...").fadeIn();
+				details.css("backgroundImage", "url(" + dot + ")");
+
 				var img = new Image();
 				img.onload = function() {
+					el.data("loaded", true);
+					loader.stop(true, true).fadeOut();
 					details.css("backgroundImage", "url(" + img.src + ")");
 				}
-				img.src = $(this).attr("href");
-			});
+				img.src = href;
 
-		} else {
+			}
+		});
 
-			$("img", thumbnails).each(function(i, el){
-				var el = $(el);
-				el.attr("src", el.data("mobile"));
-			});
+		var mobileThumbnails = $(".mobile-thumbnails", this.el);
 
-			var s = new Swipe( document.getElementById("product-thumbnails") );
-			$("a", thumbnails).click(function(e){
-				e.preventDefault();
-				s.next();
-			});
+		$("a", mobileThumbnails).click(function(e){
+			e.preventDefault();
+			console.log("click, swipe");
+		});
 
-		}
 	}
 	
 });

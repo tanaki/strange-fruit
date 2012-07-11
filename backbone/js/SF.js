@@ -51,6 +51,8 @@ SF.Router = Backbone.Router.extend({
 	infosView : null,
 	pressView : null,
 	productView : null,
+
+	imageLoaded : [],
 	
 	routes : {
 		"about" : "_aboutAction",
@@ -142,16 +144,59 @@ SF.Router = Backbone.Router.extend({
 	 * @private
 	 */
 	_init : function( callbackEvent, slug ) {
+
 		this.isInit = true;
 		
 		this._initEventHandlers();
 		this._initNav();
 
-		var self = this;
-		SF.Data.Collections = new SF.Collection.CollectionCollection();
-		SF.Data.Collections.fetch().success(function(){
-			self._displayPage( callbackEvent, slug );
+		var 
+			self = this,
+			images = [
+				"/img/logo.png",
+				"/img/skin/bg_cart.png",
+				"/img/skin/bg_collection-link.png",
+				"/img/skin/bg_collections.png",
+				"/img/skin/bg_grid.png",
+				"/img/skin/bg_menu.png",
+				"/img/skin/pdf.png"
+			];
+
+		self._preloadImages( images, function(){
+
+			SF.Data.Images = self.imageLoaded;
+			self.imageLoaded = [];
+			$(".loading").hide();
+
+			SF.Data.Collections = new SF.Collection.CollectionCollection();
+			SF.Data.Collections.fetch().success(function(){
+				self._displayPage( callbackEvent, slug );
+			});
 		});
+	},
+
+	_preloadImages : function ( imageArray, callback ) {
+
+		var 
+			self = this,
+			img = new Image();
+
+		img.onload = function() {
+
+			self.imageLoaded.push(img);
+			imageArray.shift();
+
+			if ( imageArray.length > 0 ) {
+				self._preloadImages( imageArray, callback );
+			} else {
+				callback();
+			}
+
+			var percent = (self.imageLoaded.length * 100) / (imageArray.length + self.imageLoaded.length);
+			$(".loading").text("Loading... " + Math.round(percent) + "%" );
+		}
+		img.src = imageArray[0];
+
 	},
 	
 	/*
@@ -428,7 +473,7 @@ SF.View.Base = Backbone.View.extend({
 	},
 	
 	_display : function(data) {
-
+		
 		var 
 			self = this,
 			models = this.collection ? this.collection.models : null,
@@ -439,7 +484,7 @@ SF.View.Base = Backbone.View.extend({
 			tpl = _.template(this.tpl);
 		
 		$("body").attr("class", "").addClass(this.classname);
-		$(this.el).html( tpl(params) ).hide().fadeIn(300, function(){
+		$(this.el).html( tpl(params) ).hide().fadeIn(500, function(){
 			self.onFadeIn(self);
 		});
 	},
@@ -482,6 +527,12 @@ SF.View.Collections = SF.View.Base.extend({
 
 	setSlug : function(slug) {
 		this.slug = slug;
+	},
+
+	onFadeIn : function(self) {
+		
+		$("body").addClass("visible");
+
 	}
 	
 });
@@ -570,37 +621,51 @@ SF.View.Product = SF.View.Base.extend({
 			thumbnails = $(".thumbnails", this.el),
 			details = $(".details", this.el);
 
-		if ( $(window).width() > 800 ) {
 
-			$("a", thumbnails).click(function(e){
-				e.preventDefault();
+		$("a", thumbnails).click(function(e){
+			e.preventDefault();
 
-				if ( $(this).parent().hasClass("selected") ) return;
+			if ( $(this).parent().hasClass("selected") ) return;
 
-				$(".selected", thumbnails).removeClass("selected");
-				$(this).parent().addClass("selected");
-				
+			var 
+				el = $(this),
+				loader = $(".loading"),
+				href = el.attr("href"),
+				dot = "/img/skin/dot.gif";
+
+			$(".selected", thumbnails).removeClass("selected");
+			el.parent().addClass("selected");
+			
+			if ( el.data("loaded") ) {
+
+				loader.stop(true, true).fadeOut();
+				details
+					.css("backgroundImage", "url(" + dot + ")")
+					.css("backgroundImage", "url(" + href + ")");
+
+			} else {
+
+				loader.stop(true, true).text("Loading...").fadeIn();
+				details.css("backgroundImage", "url(" + dot + ")");
+
 				var img = new Image();
 				img.onload = function() {
+					el.data("loaded", true);
+					loader.stop(true, true).fadeOut();
 					details.css("backgroundImage", "url(" + img.src + ")");
 				}
-				img.src = $(this).attr("href");
-			});
+				img.src = href;
 
-		} else {
+			}
+		});
 
-			$("img", thumbnails).each(function(i, el){
-				var el = $(el);
-				el.attr("src", el.data("mobile"));
-			});
+		var mobileThumbnails = $(".mobile-thumbnails", this.el);
 
-			var s = new Swipe( document.getElementById("product-thumbnails") );
-			$("a", thumbnails).click(function(e){
-				e.preventDefault();
-				s.next();
-			});
+		$("a", mobileThumbnails).click(function(e){
+			e.preventDefault();
+			console.log("click, swipe");
+		});
 
-		}
 	}
 	
 });
