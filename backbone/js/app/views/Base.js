@@ -10,9 +10,12 @@ SF.View.Base = Backbone.View.extend({
 	slug : "",
 	
 	hide : function (callbackEvent) {
-		$(this.el).fadeOut(300, function(){
+
+		var $el = $(this.el);
+		$el.fadeOut(300, function(){
 			if (callbackEvent) SF.EventManager.trigger(callbackEvent);
 		});
+		
 	},
 	
 	render : function() {

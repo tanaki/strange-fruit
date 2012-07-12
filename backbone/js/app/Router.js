@@ -194,57 +194,59 @@ SF.Router = Backbone.Router.extend({
 		
 	_show : function( e, slug ) {
 
-		var view;
+		var 
+			self = SF.AppRouter,
+			view;
 		
 		switch ( e.type ) {
 			
 			case SF.Events.APP_READY :
-				if ( !this.mainView ) 
-					this.mainView = new SF.View.Main({
+				if ( !self.mainView ) 
+					self.mainView = new SF.View.Main({
 						collection : SF.Data.Collections
 					});
-				view = this.mainView;
+				view = self.mainView;
 				SF.AppRouter.navigate("/");
 			break;
 			
 			case SF.Events.SHOW_ABOUT :
-				if ( !this.aboutView ) this.aboutView = new SF.View.About();
-				view = this.aboutView;
+				if ( !self.aboutView ) self.aboutView = new SF.View.About();
+				view = self.aboutView;
 			break;
 			
 			case SF.Events.SHOW_CART :
-				if ( !this.cartView ) this.cartView = new SF.View.Cart();
-				view = this.cartView;
+				if ( !self.cartView ) self.cartView = new SF.View.Cart();
+				view = self.cartView;
 			break;
 
 			case SF.Events.SHOW_COLLECTIONS :
-				if ( !this.collectionsView ) 
-					this.collectionsView = new SF.View.Collections({
+				if ( !self.collectionsView ) 
+					self.collectionsView = new SF.View.Collections({
 						collection : SF.Data.Collections
 					});
-				this.collectionsView.setSlug(slug);
-				view = this.collectionsView;
+				self.collectionsView.setSlug(slug);
+				view = self.collectionsView;
 			break;
 			
 			case SF.Events.SHOW_INFOS :
-				if ( !this.infosView ) this.infosView = new SF.View.Infos();
-				view = this.infosView;
+				if ( !self.infosView ) self.infosView = new SF.View.Infos();
+				view = self.infosView;
 			break;
 			
 			case SF.Events.SHOW_PRODUCT :
-				if ( !this.productView ) this.productView = new SF.View.Product();
-				view = this.productView;
+				if ( !self.productView ) self.productView = new SF.View.Product();
+				view = self.productView;
 			break;
 
 			case SF.Events.SHOW_PRESS :
-				if ( !this.pressView ) this.pressView = new SF.View.Press();
-				view = this.pressView;
+				if ( !self.pressView ) self.pressView = new SF.View.Press();
+				view = self.pressView;
 			break;
 
 		}
 		
 		view.render();
-		this.currentView = view;
+		self.currentView = view;
 		
 	}
 	
