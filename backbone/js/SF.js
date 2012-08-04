@@ -221,8 +221,22 @@ SF.Router = Backbone.Router.extend({
 	 * @private
 	 */
 	_initNav : function() {
+		
+		$(".menu-btn").mouseenter(function(){
+			$("nav").addClass("open");
+		});
+		$("nav").mouseleave(function(){
+			$("nav").removeClass("open");
+		});
+
+		// $(".menu-btn").click(function(e){
+		// 	e.preventDefault();
+		// 	$("nav").toggleClass("open");
+		// });
+
 		$("body").delegate("a[rel=nav], nav a", "click", function(e){
 			e.preventDefault();
+			// $("nav").removeClass("open");
 			SF.AppRouter.navigate($(this).attr("href"), true);
 		});	
 	},

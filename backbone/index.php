@@ -29,18 +29,18 @@
 					<a href="#" class="menu-btn">
 						<span>Menu</span>
 					</a>
-					<!--<nav>
-						<ul>
-							<li><a class="about" href="/about"><span>About</span></a></li>
-							<li><a class="collection" href="/collections"><span>Collections</span></a></li>
-							<li><a class="press" href="/press"><span>Press</span></a></li>
-						</ul>
-					</nav>-->
 				</div>
 				<div class="cart">
 					<a href="/cart" rel="nav">Cart</a>
 				</div>
 			</header>
+
+			<nav>
+				<a class="collection" href="/collections"><span>Collections</span></a>
+				<a class="about" href="/about"><span>About</span></a>
+				<a class="infos" href="/infos"><span>Infos</span></a>
+				<a class="press" href="/press"><span>Press</span></a>
+			</nav>
 
 			<section class="content"></section>
 
